@@ -1,10 +1,8 @@
-package com.vasyl.androidbankingapp;
+package com.group2.androidbankingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-import com.vasyl.androidbankingapp.R;
 
 public class SignupActivity extends AppCompatActivity {
 

@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.vasyl.androidbankingapp'
+    namespace 'com.group2.androidbankingapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.vasyl.androidbankingapp"
+        applicationId "com.group2.androidbankingapp"
         minSdk 24
         targetSdk 33
         versionCode 1

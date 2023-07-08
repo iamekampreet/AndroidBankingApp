@@ -1,4 +1,4 @@
-package com.vasyl.androidbankingapp;
+package com.group2.androidbankingapp;
 
 import org.junit.Test;
 
