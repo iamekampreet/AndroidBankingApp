@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.group2.androidbankingapp.bottomnav.CurvedLineView
+        android:id="@+id/curvedLineView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menu_container"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.group2.androidbankingapp.bottomnav.BottomNavItem
+            android:id="@+id/home"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:tag="menu_item"
+            app:icon="@drawable/home_icon_state_selector"
+            app:item_name="Home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/accounts"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <com.group2.androidbankingapp.bottomnav.BottomNavItem
+            android:id="@+id/accounts"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:tag="menu_item"
+            app:icon="@drawable/accounts_icon_state_selector"
+            app:item_name="Accounts"
+            app:layout_constraintEnd_toStartOf="@+id/fab_main"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/home"
+            app:layout_constraintTop_toTopOf="@+id/home" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="?attr/colorSecondary"
+            app:fabCustomSize="72dp"
+            app:fabSize="auto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/move_money"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/accounts"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxImageSize="40dp"
+            app:shapeAppearanceOverlay="@style/roundedFAB"
+            app:srcCompat="@drawable/chevron_up" />
+
+        <com.group2.androidbankingapp.bottomnav.BottomNavItem
+            android:id="@+id/move_money"
+            android:layout_width="82dp"
+            android:layout_height="0dp"
+            android:tag="menu_item"
+            app:icon="@drawable/move_money_icon_state_selector"
+            app:item_name="Move Money"
+            app:layout_constraintEnd_toStartOf="@+id/more"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fab_main"
+            app:layout_constraintTop_toTopOf="@+id/accounts" />
+
+        <com.group2.androidbankingapp.bottomnav.BottomNavItem
+            android:id="@+id/more"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:tag="menu_item"
+            app:icon="@drawable/more_icon_state_selector"
+            app:item_name="More"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/move_money"
+            app:layout_constraintTop_toTopOf="@+id/move_money" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

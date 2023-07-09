@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/itemImageView"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:tint="@drawable/bottom_nav_color_state_selector"
+        app:srcCompat="@drawable/home_icon_state_selector" />
+
+    <TextView
+        android:id="@+id/itemNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:textColor="@drawable/bottom_nav_color_state_selector"
+        android:text="Home" />
+</merge>

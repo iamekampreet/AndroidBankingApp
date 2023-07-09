@@ -2,10 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.AndroidBankingApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="Theme.AndroidBankingApp" parent="Base.Theme.AndroidBankingApp" >
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+    </style>
+
+    <style name="roundedFAB">
+        <item name="cornerSize">50%</item>
     </style>
 </resources>

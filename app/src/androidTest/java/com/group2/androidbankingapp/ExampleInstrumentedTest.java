@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.vasyl.androidbankingapp", appContext.getPackageName());
+        assertEquals("com.group2.androidbankingapp", appContext.getPackageName());
     }
 }
