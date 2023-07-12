@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="100dp"
+    android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
@@ -27,13 +29,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Account Overview"
                 android:textSize="30sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="2dp">
 
                 <TextView
                     android:id="@+id/tv_accPersonal"
@@ -59,7 +67,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="2dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,7 +94,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="2dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,11 +124,11 @@
                 android:layout_height="wrap_content" >
 
                 <Button
-                    android:id="@+id/btn_AccViewAll"
+                    android:id="@+id/btn_accViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View all"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintTop_toTopOf="parent"
@@ -126,29 +140,36 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:text="NOMI"
                 android:textSize="30sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Insights"
                     android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_nomiViewAll"
                     />
 
                 <Button
-                    android:id="@+id/btn_NomiViewAll"
+                    android:id="@+id/btn_nomiViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View all"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintTop_toTopOf="parent"
@@ -159,6 +180,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
                 android:gravity="center_vertical"
                 android:background="@color/white"
                 android:orientation="horizontal" >
@@ -173,9 +196,10 @@
                     />
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="2dp"
                     android:layout_height="match_parent"
-                    android:background="@color/grey"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@color/background"
                     />
 
                 <TextView
@@ -191,6 +215,9 @@
                 android:layout_height="wrap_content"
                 android:text="How much money NOMI Find &amp; Save would've saved for you in the past six month?"
                 android:textSize="22sp"
+                android:background="@color/white"
+                android:paddingHorizontal="20dp"
+                android:paddingBottom="10dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -210,7 +237,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View Details"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintTop_toTopOf="parent"
@@ -222,13 +249,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Credit Cards"
                 android:textSize="30sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -242,46 +274,68 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CAD 0.00"
+                    android:text="CAD 10.00"
                     android:textSize="22sp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ProgressBar
-                android:id="@+id/progressBar_visa"
-                style="?android:attr/progressBarStyleHorizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/progressBar_visa"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:progress="10"
+                    android:max="100"
+                    android:progressDrawable="@drawable/home_progressbar" />
+            </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp">
 
                 <TextView
+                    android:id="@+id/tv_creditLimit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Credit Limit: 1,000.00"
                     android:textSize="20sp"
+                    android:paddingBottom="20dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/background"
+                    app:layout_constraintTop_toBottomOf="@id/tv_creditLimit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/grey"
-                />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="15dp"
                 android:text="Minimum payment of $0.00 due:"
                 android:textSize="20sp"
                 android:textAlignment="center"
+                android:background="@color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -291,6 +345,7 @@
                 android:text="Jul 17, 2023"
                 android:textSize="20sp"
                 android:textAlignment="center"
+                android:background="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -299,27 +354,31 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
 
                 <Button
                     android:id="@+id/btn_payCreditWithPoints"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pay Credit Card with Points"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:paddingHorizontal="3dp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/view_Credit"/>
+                    app:layout_constraintEnd_toStartOf="@id/view_credit"/>
 
                 <View
-                    android:id="@+id/view_Credit"
+                    android:id="@+id/view_credit"
                     android:layout_width="1dp"
                     android:layout_height="0dp"
-                    android:background="@color/grey"
+                    android:background="@color/background"
+                    android:layout_marginVertical="9dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btn_payCreditWithPoints"
+                    app:layout_constraintEnd_toStartOf="@id/btn_payCreditNow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     />
 
@@ -328,13 +387,271 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pay Now"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:paddingHorizontal="3dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintStart_toEndOf="@id/view_credit"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- New Feature -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="New Feature"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/home_announcement" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Replace Your Client Card"
+                    android:textSize="25sp"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:layout_marginBottom="2dp"
+                android:text="Now you can replace a damaged client card right here in the mobile app."
+                android:textSize="22sp"
+                android:background="@color/white"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_manageCards"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Cards"
+                    android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Split with Friends -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Split with Friends"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:text="In three quick steps, collect money from your friends for shared expenses."
+                android:textSize="22sp"
+                android:textAlignment="center"
+                android:background="@color/white"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:layout_marginBottom="2dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/layout_roundedbg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="How much would you like to split?"
+                        android:textSize="22sp"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        />
+
+                    <EditText
+                        android:id="@+id/editTextNumberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="0.00"
+                        android:textSize="60sp"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_split"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Split It"
+                    android:textSize="26sp"
+                    android:paddingVertical="15dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    app:cornerRadius="0dp"/>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_viewReqMoneyHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Request Money History"
+                    android:textSize="20sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Offers -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Offers"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/home_doordash_back" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingVertical="15dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/home_doordash_logo"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_offerDetails"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_offerDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Details"
+                    android:textSize="20sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_offerExpiration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expires on Aug 28, 2023"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_offerDetails"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get a complimentary DashPass &amp; enjoy $0 delivery fees for up to 12 month on eligible orders*"
+                    android:textSize="22sp"
+                    android:paddingRight="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_offerExpiration"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_offersViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View all"
+                    android:textSize="20sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Important Information -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Important Information"
+                android:textSize="30sp" />
+
+            <ImageButton
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="0dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/home_cdic"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
