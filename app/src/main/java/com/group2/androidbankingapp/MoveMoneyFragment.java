@@ -1,9 +1,12 @@
 package com.group2.androidbankingapp;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
@@ -13,13 +16,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MoveMoneyFragment extends Fragment {
+    View transferBetweenAccounts;
+    View returnBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_move_money, container, false);
         setInteracItalic(rootView);
+
+        transferBetweenAccounts = rootView.findViewById(R.id.constraint_transfer_between_my_accounts);
+        returnBack = rootView.findViewById(R.id.img_return_back);
+        transferBetweenAccounts.setOnClickListener(v -> transferBetweenAccountsClick());
+
+        returnBack.setOnClickListener(v -> returnBackClick());
+
         return rootView;
     }
 
@@ -40,4 +51,20 @@ public class MoveMoneyFragment extends Fragment {
         // Set the modified SpannableString as the text of the TextView
         tvSendMoneyInterac.setText(spannableString);
     }
+    private void transferBetweenAccountsClick(){
+        TransferBetweenAccountsFragment transferFragment = new TransferBetweenAccountsFragment();
+
+        FragmentManager fragmentManager = getParentFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, transferFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void returnBackClick(){
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
+
 }
