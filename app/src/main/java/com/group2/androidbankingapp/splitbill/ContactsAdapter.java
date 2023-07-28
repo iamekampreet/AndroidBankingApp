@@ -73,6 +73,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         ContactRowModel contactRowModel = mContacts.get(position);
 
         if (!contactRowModel.isSectionIndicator) {
+            holder.contactPhoneNumberTextView.setVisibility(View.VISIBLE);
+            holder.contactNameTextView.setVisibility(View.VISIBLE);
+            holder.selectContactCheckbox.setVisibility(View.VISIBLE);
+            holder.sectionTextView.setVisibility(View.GONE);
+
             holder.contactNameTextView.setText(contactRowModel.data.getName());
             holder.contactPhoneNumberTextView.setText(contactRowModel.data.getPhoneNumber());
             holder.selectContactCheckbox.setChecked(contactRowModel.isSelected);

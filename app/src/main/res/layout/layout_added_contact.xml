@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="100dp"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:padding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +19,8 @@
             android:id="@+id/cardview_initials"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:background="@android:color/white"
+            android:backgroundTint="@android:color/white"
             app:cardCornerRadius="60dp"
             app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +57,9 @@
         android:id="@+id/textView_selected_contact_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:text="Contact Name"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

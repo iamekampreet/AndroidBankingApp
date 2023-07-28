@@ -1,5 +1,7 @@
 package com.group2.androidbankingapp.splitbill;
 
+import androidx.annotation.NonNull;
+
 public class ContactModel implements Comparable<ContactModel> {
 
     private String name;
@@ -24,5 +26,11 @@ public class ContactModel implements Comparable<ContactModel> {
     @Override
     public int compareTo(ContactModel contactModel) {
         return this.name.compareTo(contactModel.name);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Name = " + name + ", Phone Number = " + phoneNumber;
     }
 }

@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:id="@+id/main_container"
     tools:context=".splitbill.SplitBillActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
+        android:minHeight="300dp"
         android:layout_height="300dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="@color/white"
+        android:fitsSystemWindows="true" >
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
@@ -21,8 +24,11 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginTop="20dp"
             app:expandedTitleGravity="top"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:expandedTitleTextColor="@color/black">
+<!--            app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+<!--            >-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -45,17 +51,20 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="0.00"
-                    app:boxBackgroundColor="@android:color/transparent"
+                    android:hint="Input Amount"
+                    app:boxBackgroundColor="@color/white"
                     app:layout_constraintBottom_toTopOf="@+id/button_pick_friends"
                     app:layout_constraintEnd_toEndOf="@+id/button_pick_friends"
                     app:layout_constraintStart_toStartOf="@+id/button_pick_friends">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editText_event_title"
+                        android:id="@+id/editText_split_amount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:text="0.0"
+                        android:textColor="@color/black"
+                        android:inputType="number"
                         android:textStyle="bold"
                         android:textSize="48sp" />
 
@@ -68,17 +77,20 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
                     android:text="Pick your friends"
+                    android:textColor="@color/white"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="Split with Friends"
+                app:navigationIcon="@drawable/ic_arrow_back_24"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
