@@ -1,6 +1,7 @@
 package com.group2.androidbankingapp.splitbill;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.os.Bundle;
@@ -8,9 +9,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.group2.androidbankingapp.HomeFragment;
@@ -20,10 +23,17 @@ import java.math.BigDecimal;
 
 public class SplitBillActivity extends AppCompatActivity {
 
+    public static final String ROOT = "SplitBillActivity";
+
     CollapsingToolbarLayout collapsingToolbarLayout;
     AppBarLayout appBarLayout;
 
     TextInputEditText splitAmountEditText;
+
+    ConstraintLayout initialContainer;
+    ConstraintLayout summaryContainer;
+
+    TextView totalRequestAmountTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +46,28 @@ public class SplitBillActivity extends AppCompatActivity {
 
         appBarLayout = findViewById(R.id.appbar);
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
+
+        initialContainer = findViewById(R.id.container_initial);
+        summaryContainer = findViewById(R.id.container_summary);
+        totalRequestAmountTextView = findViewById(R.id.textView_amount);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         pickFriendsButton.setOnClickListener(view -> {
             enableExpandableAppBar();
             appBarLayout.setExpanded(false);
 
+            PickFriendsFragment pickFriendsFragment =
+                    (PickFriendsFragment) getSupportFragmentManager().findFragmentByTag(PickFriendsFragment.TAG);
+            if (pickFriendsFragment == null) {
+                pickFriendsFragment = new PickFriendsFragment();
+            }
+
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container_split_bill, PickFriendsFragment.class, null)
+                    .replace(R.id.fragment_container_split_bill, pickFriendsFragment, PickFriendsFragment.TAG)
                     .setReorderingAllowed(true)
-                    .addToBackStack(null)
+                    .addToBackStack(SplitBillActivity.ROOT)
                     .commit();
         });
 
@@ -79,6 +103,21 @@ public class SplitBillActivity extends AppCompatActivity {
                 }
             }
         });
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().popBackStack();
+                int count = getSupportFragmentManager().getBackStackEntryCount();
+                if (count == 1) {
+                    SplitBillActivity.this.setAppBarHeight(
+                            getResources().getDimensionPixelSize(R.dimen.app_bar_height_full)
+                    );
+                    SplitBillActivity.this.setSummaryAppBarVisibility(View.GONE);
+                    appBarLayout.setExpanded(true);
+                }
+            }
+        });
     }
 
     public void disableExpandableAppBar() {
@@ -101,5 +140,28 @@ public class SplitBillActivity extends AppCompatActivity {
                 (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
         layoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
                 | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
+    }
+
+    public void setAppBarHeight(int height) {
+        CoordinatorLayout.LayoutParams layoutParamsAppBar =
+                (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+        layoutParamsAppBar.height = height;
+    }
+
+    public void setSummaryAppBarVisibility(int visibility) {
+
+        if (visibility == View.VISIBLE)  {
+            initialContainer.setVisibility(View.GONE);
+            summaryContainer.setVisibility(View.VISIBLE);
+        } else {
+            initialContainer.setVisibility(View.VISIBLE);
+            summaryContainer.setVisibility(View.GONE);
+        }
+
+        appBarLayout.setExpanded(true);
+    }
+
+    public void updateTotalRequestAmount(double amount) {
+        totalRequestAmountTextView.setText(amount + "");
     }
 }

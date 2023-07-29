@@ -128,10 +128,17 @@ public class SplitAccountInfoFragment extends Fragment implements OnAccountSelec
                         .replace(R.id.fragment_container_split_bill,
                                 summaryFragment)
                         .setReorderingAllowed(true)
-                        .addToBackStack(null)
+                        .addToBackStack(SplitBillActivity.ROOT)
                         .commit();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        ((SplitBillActivity) getActivity()).disableExpandableAppBar();
     }
 
     private void updateSplitAmountPerPerson() {

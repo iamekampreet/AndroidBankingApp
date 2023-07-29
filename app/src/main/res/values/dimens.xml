@@ -2,4 +2,6 @@
 <resources>
     <dimen name="bottom_nav_height">100dp</dimen>
     <dimen name="app_bar_collapsed_height">65dp</dimen>
+    <dimen name="app_bar_summary_height">200dp</dimen>
+    <dimen name="app_bar_height_full">300dp</dimen>
 </resources>

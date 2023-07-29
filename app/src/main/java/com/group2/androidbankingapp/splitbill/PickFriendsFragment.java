@@ -38,27 +38,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PickFriendsFragment extends Fragment implements OnSelectedContactChangeListener {
-    private static final String[] PROJECTION =
-            {
-                    ContactsContract.Contacts._ID,
-                    ContactsContract.Contacts.LOOKUP_KEY,
-                    ContactsContract.Contacts.DISPLAY_NAME
-            };
 
-    private static final String[] PROJECTION_DETAIL =
-            {
-                    ContactsContract.Data.DATA1,
-                    ContactsContract.CommonDataKinds.Email._ID,
-                    ContactsContract.Data.MIMETYPE
-            };
-
-    private static final String SELECTION = ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?";
-    private String searchString;
-    private String[] selectionArgs = { searchString };
-
-    private static final String SELECTION_DETAILS =
-            ContactsContract.Data.CONTACT_ID + " = ?"
-                    + " AND " + ContactsContract.Data.MIMETYPE + " = '" + ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "'";
+    public static final String TAG =  "PickFriendsFragment";
 
     List<Integer> selectedContacts = new ArrayList<>();
 
@@ -68,6 +49,8 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
     ContactsAdapter contactsAdapter;
     RecyclerView contactRecyclerView;
     Button nextButton;
+
+    ContactHelper contactHelper = new ContactHelper();
 
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(),
@@ -79,6 +62,10 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
                     });
 
     ArrayList<ContactRowModel> contacts;
+
+    public PickFriendsFragment() {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +80,11 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
         ((SplitBillActivity) getActivity()).disableExpandableAppBar();
         if (ContextCompat.checkSelfPermission(
                 getContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            readContactsAsync();
+            if (contacts == null || contacts.isEmpty()) {
+                readContactsAsync();
+            } else {
+                setUpContactList();
+            }
         } else {
             requestPermissionLauncher.launch(Manifest.permission.READ_CONTACTS);
         }
@@ -105,12 +96,13 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
             @SuppressLint("StaticFieldLeak")
             @Override
             protected List<ContactRowModel> doInBackground(Void... voids) {
-                return readContacts();
+                return contactHelper.readContacts(getContext().getContentResolver());
             }
 
             @Override
             protected void onPostExecute(List<ContactRowModel> contactRowModels) {
                 super.onPostExecute(contactRowModels);
+                contacts = (ArrayList<ContactRowModel>) contactRowModels;
                 setUpContactList();
             }
         }.execute();
@@ -125,7 +117,7 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
         TextView loadingContactsTextView = view.findViewById(R.id.textView_loading_contacts);
         nextButton = view.findViewById(R.id.button_pick_friends_next);
 
-        contacts = readContacts();
+//        contacts = readContacts();
         for (ContactRowModel contact:
              contacts) {
             Log.d("contacts", contact.toString());
@@ -154,10 +146,12 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
                         .replace(R.id.fragment_container_split_bill,
                                 splitAccountInfoFragment)
                         .setReorderingAllowed(true)
-                        .addToBackStack(null)
+                        .addToBackStack(SplitBillActivity.ROOT)
                         .commit();
             }
         });
+
+        generateSelectedContactList();
     }
 
     @Override
@@ -210,71 +204,5 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
 
             selectedContactContainer.addView(selectedContactLayout);
         });
-    }
-
-    private ArrayList<ContactRowModel> readContacts() {
-        ArrayList<ContactModel> contacts = new ArrayList<>();
-
-        Cursor cursor = getContext().getContentResolver().query(
-                ContactsContract.Contacts.CONTENT_URI,
-                null,
-                null,
-                null,
-                null
-        );
-
-        int size = cursor.getCount();
-
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                ContactModel contactModel = new ContactModel();
-
-                String contactId = cursor.getString(
-                        cursor.getColumnIndex(ContactsContract.Contacts._ID));
-                String contactName = cursor.getString(
-                        cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                Log.d("contacts", "contactId = " + contactId + " Contactkey = " + contactName);
-                contactModel.setName(contactName);
-
-                Cursor cursor_details = getActivity().getContentResolver().query(
-                        ContactsContract.Data.CONTENT_URI,
-                        PROJECTION_DETAIL,
-                        SELECTION_DETAILS,
-                        new String[]{ contactId },
-                        null
-                );
-
-                if (cursor_details != null
-                        && cursor_details.moveToNext()) {
-                    String phoneNumber = cursor_details.getString(
-                            cursor_details.getColumnIndex(ContactsContract.Data.DATA1));
-                    Log.d("contacts", "Phone number = " + phoneNumber);
-                    contactModel.setPhoneNumber(phoneNumber);
-
-                    cursor_details.close();
-                }
-                contacts.add(contactModel);
-            }
-            cursor.close();
-        }
-
-        Set<String> initialChars = contacts.stream()
-                .map(contactModel -> contactModel.getName().substring(0, 1))
-                .collect(Collectors.toSet());
-
-        ArrayList<ContactRowModel> rowModels = new ArrayList<>();
-        initialChars.stream()
-                .sorted()
-                .forEach(iChar -> {
-                    List<ContactRowModel> tempModels = contacts.stream()
-                            .filter(contact -> contact.getName().substring(0, 1).equals(iChar))
-                            .sorted()
-                            .map(contact -> new ContactRowModel(false, null, contact))
-                            .collect(Collectors.toList());
-                    rowModels.add(new ContactRowModel(true, iChar, null));
-                    rowModels.addAll(tempModels);
-                });
-
-        return rowModels;
     }
 }
