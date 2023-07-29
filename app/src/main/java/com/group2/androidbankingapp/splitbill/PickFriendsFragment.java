@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,6 +67,7 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
     TextView titleSelectedTextView;
     ContactsAdapter contactsAdapter;
     RecyclerView contactRecyclerView;
+    Button nextButton;
 
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(),
@@ -88,6 +90,7 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((SplitBillActivity) getActivity()).disableExpandableAppBar();
         if (ContextCompat.checkSelfPermission(
                 getContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             readContactsAsync();
@@ -120,6 +123,7 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
         titleSelectedTextView = view.findViewById(R.id.textView_title_selected);
         ProgressBar contactProgressBar = view.findViewById(R.id.progressBar_contacts);
         TextView loadingContactsTextView = view.findViewById(R.id.textView_loading_contacts);
+        nextButton = view.findViewById(R.id.button_pick_friends_next);
 
         contacts = readContacts();
         for (ContactRowModel contact:
@@ -135,6 +139,25 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
         contactsAdapter.setOnSelectedContactChangeListener(this);
         contactRecyclerView.setAdapter(contactsAdapter);
         contactRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<ContactModel> selectContactModel = (ArrayList<ContactModel>) selectedContacts.stream()
+                        .map(position -> contacts.get(position).data)
+                        .collect(Collectors.toList());
+
+                SplitAccountInfoFragment splitAccountInfoFragment =
+                        SplitAccountInfoFragment.newInstance(selectContactModel);
+
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container_split_bill,
+                                splitAccountInfoFragment)
+                        .setReorderingAllowed(true)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     @Override
@@ -155,9 +178,11 @@ public class PickFriendsFragment extends Fragment implements OnSelectedContactCh
         if (selectedContacts.size() > 0) {
             horizontalScrollView.setVisibility(View.VISIBLE);
             titleSelectedTextView.setVisibility(View.VISIBLE);
+            nextButton.setVisibility(View.VISIBLE);
         } else {
             horizontalScrollView.setVisibility(View.GONE);
             titleSelectedTextView.setVisibility(View.GONE);
+            nextButton.setVisibility(View.GONE);
         }
 
         selectedContactContainer.removeAllViews();

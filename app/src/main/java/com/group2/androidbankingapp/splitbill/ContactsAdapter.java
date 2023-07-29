@@ -36,7 +36,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             contactNameTextView = itemView.findViewById(R.id.textView_name);
             contactPhoneNumberTextView = itemView.findViewById(R.id.textView_phone_number);
             sectionTextView = itemView.findViewById(R.id.textView_section);
-            selectContactCheckbox = itemView.findViewById(R.id.checkBox_select_contact);
+            selectContactCheckbox = itemView.findViewById(R.id.checkBox_include_user);
             contactNameTextView.setTag(getAdapterPosition());
 
             selectContactCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

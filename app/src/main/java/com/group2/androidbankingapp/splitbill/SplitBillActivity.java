@@ -20,22 +20,24 @@ import java.math.BigDecimal;
 
 public class SplitBillActivity extends AppCompatActivity {
 
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    AppBarLayout appBarLayout;
+
+    TextInputEditText splitAmountEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_split_bill);
 
         Button pickFriendsButton = findViewById(R.id.button_pick_friends);
-        TextInputEditText splitAmountEditText = findViewById(R.id.editText_split_amount);
+        splitAmountEditText = findViewById(R.id.editText_split_amount);
         CoordinatorLayout mainLayout = findViewById(R.id.main_container);
 
-        AppBarLayout appBarLayout = findViewById(R.id.appbar);
-        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
+        appBarLayout = findViewById(R.id.appbar);
+        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
         pickFriendsButton.setOnClickListener(view -> {
-            AppBarLayout.LayoutParams layoutParams =
-                    (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
-            layoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
-                    | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+            enableExpandableAppBar();
             appBarLayout.setExpanded(false);
 
             getSupportFragmentManager().beginTransaction()
@@ -43,7 +45,6 @@ public class SplitBillActivity extends AppCompatActivity {
                     .setReorderingAllowed(true)
                     .addToBackStack(null)
                     .commit();
-
         });
 
         splitAmountEditText.addTextChangedListener(new TextWatcher() {
@@ -78,5 +79,27 @@ public class SplitBillActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void disableExpandableAppBar() {
+//        AppBarLayout.LayoutParams layoutParams =
+//                (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
+//        layoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL);
+        CoordinatorLayout.LayoutParams layoutParamsAppBar =
+            (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+        layoutParamsAppBar.height = getResources().getDimensionPixelSize(R.dimen.app_bar_collapsed_height);
+        appBarLayout.setExpanded(false);
+    }
+
+    public double getSplitAmount() {
+        String splitAmountStr = splitAmountEditText.getText().toString();
+        return Double.parseDouble(splitAmountStr);
+    }
+
+    public void enableExpandableAppBar() {
+        AppBarLayout.LayoutParams layoutParams =
+                (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
+        layoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+                | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
     }
 }
