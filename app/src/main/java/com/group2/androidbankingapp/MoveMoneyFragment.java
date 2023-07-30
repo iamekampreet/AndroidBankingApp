@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.group2.androidbankingapp.splitbill.SplitBillActivity;
 
 public class MoveMoneyFragment extends Fragment {
     View transferBetweenAccounts;
@@ -32,6 +36,21 @@ public class MoveMoneyFragment extends Fragment {
         returnBack.setOnClickListener(v -> returnBackClick());
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ConstraintLayout splitBill = view.findViewById(R.id.constraint_split_with_friends);
+        splitBill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent splitBillIntent =
+                        new Intent(MoveMoneyFragment.this.getActivity(), SplitBillActivity.class);
+                startActivity(splitBillIntent);
+            }
+        });
+
     }
 
     private void setInteracItalic(View rootView) {

@@ -13,15 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.group2.androidbankingapp.R;
-import com.group2.androidbankingapp.common.AccountInfoModel;
+import com.group2.androidbankingapp.models.AccountInfo;
+import com.group2.androidbankingapp.splitbill.accountModal.AccountModalBottomSheet;
+import com.group2.androidbankingapp.splitbill.accountModal.OnAccountSelectedListener;
+import com.group2.androidbankingapp.utils.Singleton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SplitAccountInfoFragment extends Fragment implements OnAccountSelectedListener {
 
@@ -75,6 +75,8 @@ public class SplitAccountInfoFragment extends Fragment implements OnAccountSelec
         TextInputEditText yourEmailEditText = view.findViewById(R.id.edittext_your_email);
         Button nextButton = view.findViewById(R.id.button_next_account_info);
 
+        yourEmailEditText.setText(Singleton.getInstance().user.getEmail());
+
         accountEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -110,6 +112,8 @@ public class SplitAccountInfoFragment extends Fragment implements OnAccountSelec
                 if (current != null) {
                     current.clearFocus();
                 }
+
+                splitInfoDetailModel.setUserEmail(yourEmailEditText.getText().toString());
 
                 if (splitInfoDetailModel.getDepositInfo() == null) {
                     accountEditText.setError("Please select a deposit account");
@@ -152,8 +156,8 @@ public class SplitAccountInfoFragment extends Fragment implements OnAccountSelec
     }
 
     @Override
-    public void onAccountSelected(AccountInfoModel accountInfoModel) {
-        splitInfoDetailModel.setDepositInfo(accountInfoModel);
-        accountEditText.setText(accountInfoModel.toString());
+    public void onAccountSelected(AccountInfo accountInfo) {
+        splitInfoDetailModel.setDepositInfo(accountInfo);
+        accountEditText.setText(accountInfo.toString());
     }
 }

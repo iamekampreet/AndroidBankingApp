@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview_modal_account_row"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    app:contentPadding="16dp">
+
+    <TextView
+        android:id="@+id/textView_account_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:text="Savings" />
+
+    <TextView
+        android:id="@+id/textView_amount_in_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right"
+        android:text="$5,000" />
+
+    <TextView
+        android:id="@+id/textView_account_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:text="#7096" />
+
+</androidx.cardview.widget.CardView>

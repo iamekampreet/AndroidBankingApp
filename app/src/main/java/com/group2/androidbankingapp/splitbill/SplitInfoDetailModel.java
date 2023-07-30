@@ -1,22 +1,22 @@
 package com.group2.androidbankingapp.splitbill;
 
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
-import com.group2.androidbankingapp.common.AccountInfoModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.group2.androidbankingapp.models.AccountInfo;
 
 import org.parceler.Parcel;
 
 import java.util.List;
 
 @Parcel
+@JsonIgnoreProperties(value = { "_id" })
 public class SplitInfoDetailModel {
     List<ContactModel> friendInfos;
 
     String note;
 
-    AccountInfoModel depositInfo;
+    @JsonProperty("accountNumber")
+    AccountInfo depositInfo;
 
     String userEmail;
 
@@ -40,11 +40,11 @@ public class SplitInfoDetailModel {
         this.note = note;
     }
 
-    public AccountInfoModel getDepositInfo() {
+    public AccountInfo getDepositInfo() {
         return depositInfo;
     }
 
-    public void setDepositInfo(AccountInfoModel depositInfo) {
+    public void setDepositInfo(AccountInfo depositInfo) {
         this.depositInfo = depositInfo;
     }
 

@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.group2.androidbankingapp.HomeFragment;
 import com.group2.androidbankingapp.R;
+import com.group2.androidbankingapp.utils.Utils;
 
 import java.math.BigDecimal;
 
@@ -69,6 +70,8 @@ public class SplitBillActivity extends AppCompatActivity {
                     .setReorderingAllowed(true)
                     .addToBackStack(SplitBillActivity.ROOT)
                     .commit();
+
+            Utils.hideKeyboard(this);
         });
 
         splitAmountEditText.addTextChangedListener(new TextWatcher() {
@@ -85,8 +88,9 @@ public class SplitBillActivity extends AppCompatActivity {
                 String userInput = editable.toString();
                 Snackbar snackbar = Snackbar.make(mainLayout,
                         "Please enter an amount between $0.01 and $250,000.",
-                        Snackbar.LENGTH_INDEFINITE);
+                        Snackbar.LENGTH_LONG);
                 try {
+                    if (userInput.isEmpty()) return;
                     float splitAmount = Float.parseFloat(userInput);
                     if (splitAmount >= 0.01 && splitAmount <= 250000) {
                         pickFriendsButton.setVisibility(View.VISIBLE);
@@ -115,15 +119,14 @@ public class SplitBillActivity extends AppCompatActivity {
                     );
                     SplitBillActivity.this.setSummaryAppBarVisibility(View.GONE);
                     appBarLayout.setExpanded(true);
+                } else if (count == 0) {
+                    SplitBillActivity.this.finish();
                 }
             }
         });
     }
 
     public void disableExpandableAppBar() {
-//        AppBarLayout.LayoutParams layoutParams =
-//                (AppBarLayout.LayoutParams) collapsingToolbarLayout.getLayoutParams();
-//        layoutParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL);
         CoordinatorLayout.LayoutParams layoutParamsAppBar =
             (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
         layoutParamsAppBar.height = getResources().getDimensionPixelSize(R.dimen.app_bar_collapsed_height);

@@ -1,5 +1,7 @@
 package com.group2.androidbankingapp.splitbill;
 
+import static androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,15 +15,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.android.material.snackbar.Snackbar;
 import com.group2.androidbankingapp.R;
+import com.group2.androidbankingapp.api.SingleMessageResponseModel;
+import com.group2.androidbankingapp.api.SplitBillService;
+import com.group2.androidbankingapp.utils.Singleton;
 
 import org.parceler.Parcels;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class SummaryFragment extends Fragment {
     private static final String ARG_PARAM_SUMMARY_MODEL = "SUMMARY_MODEL";
-
     private SplitInfoDetailModel mSplitInfoDetailModel;
 
     public SummaryFragment() {
@@ -74,6 +88,7 @@ public class SummaryFragment extends Fragment {
         TextView yourEmailTextView = view.findViewById(R.id.textView_email_value);
         Button sendSplitRequestButton = view.findViewById(R.id.button_send);
         Button editButton = view.findViewById(R.id.button_edit);
+        ProgressBar apiProgressBar = view.findViewById(R.id.progressBar_api);
 
         despositAccountTextView.setText(mSplitInfoDetailModel.getDepositInfo().toString());
         yourEmailTextView.setText(mSplitInfoDetailModel.getUserEmail());
@@ -81,7 +96,48 @@ public class SummaryFragment extends Fragment {
         sendSplitRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //retrofit request
+                apiProgressBar.setVisibility(View.VISIBLE);
+
+                SplitBillService splitBillService = Singleton.getRetrofitInstance().create(SplitBillService.class);
+                Call<SingleMessageResponseModel> response = splitBillService.requestSplitBill(mSplitInfoDetailModel);
+
+                response.enqueue(new Callback<SingleMessageResponseModel>() {
+                    @Override
+                    public void onResponse(Call<SingleMessageResponseModel> call, Response<SingleMessageResponseModel> response) {
+                        Log.d("SummaryFrament", response.message());
+                        apiProgressBar.setVisibility(View.GONE);
+                        if (response.isSuccessful()) {
+                            SplitBillActivity splitBillActivity = ((SplitBillActivity) getActivity());
+                            splitBillActivity.setAppBarHeight(getResources().getDimensionPixelSize(R.dimen.app_bar_height_full));
+                            splitBillActivity.setSummaryAppBarVisibility(View.GONE);
+                            SummaryFragment.this.getActivity().getSupportFragmentManager()
+                                    .popBackStack(SplitBillActivity.ROOT, POP_BACK_STACK_INCLUSIVE);
+                            Toast.makeText(getContext(),
+                                    response.body().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(),
+                                    response.message(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SingleMessageResponseModel> call, Throwable t) {
+                        apiProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(getContext(),
+                                "Error: " + t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+
+//                ObjectMapper objectMapper = new ObjectMapper();
+//                try {
+//                    String modelBody = objectMapper.writeValueAsString(mSplitInfoDetailModel);
+//                    Log.d("SummaryFragment", modelBody);
+//                } catch (JsonProcessingException e) {
+//                    throw new RuntimeException(e);
+//                }
             }
         });
 
