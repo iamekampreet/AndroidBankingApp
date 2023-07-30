@@ -9,6 +9,15 @@
         <item name="colorSecondary">@color/colorSecondary</item>
     </style>
 
+    <style name="Widget.AppTheme.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="colorControlActivated">@android:color/white</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/color_selector</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+
     <style name="roundedFAB">
         <item name="cornerSize">50%</item>
     </style>

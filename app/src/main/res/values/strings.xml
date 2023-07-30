@@ -3,5 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="responsible_message">You are responsible for providing the correct recipient details and you must have the recipient\'permission to use them.</string>
+
+    <string name="action_text">OK</string>
+
 
 </resources>
