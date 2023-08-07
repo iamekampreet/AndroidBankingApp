@@ -17,10 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.group2.androidbankingapp.betweenaccounts.TransferBetweenAccountsFragment;
 import com.group2.androidbankingapp.splitbill.SplitBillActivity;
+import com.group2.androidbankingapp.betweenaccounts.TransferBetweenAccountsFragment;
+import com.group2.androidbankingapp.paybill.PayBillFragment;
 
 public class MoveMoneyFragment extends Fragment {
+
+    public static final String TAG = "MOVEMONEYFRAGMENTTAG";
     View transferBetweenAccounts;
     View returnBack;
 
@@ -51,6 +54,19 @@ public class MoveMoneyFragment extends Fragment {
                 startActivity(splitBillIntent);
             }
         });
+
+        ConstraintLayout payBill = view.findViewById(R.id.constraint_pay_a_bill);
+        payBill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, PayBillFragment.class, null)
+                        .addToBackStack(MoveMoneyFragment.TAG)
+                        .commit();
+            }
+        });
+
+
 
     }
 

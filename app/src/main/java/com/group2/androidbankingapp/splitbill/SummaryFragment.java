@@ -112,6 +112,7 @@ public class SummaryFragment extends Fragment {
                             splitBillActivity.setSummaryAppBarVisibility(View.GONE);
                             SummaryFragment.this.getActivity().getSupportFragmentManager()
                                     .popBackStack(SplitBillActivity.ROOT, POP_BACK_STACK_INCLUSIVE);
+
                             Toast.makeText(getContext(),
                                     response.body().getMessage(),
                                     Toast.LENGTH_LONG).show();
@@ -130,14 +131,6 @@ public class SummaryFragment extends Fragment {
                                 Toast.LENGTH_LONG).show();
                     }
                 });
-
-//                ObjectMapper objectMapper = new ObjectMapper();
-//                try {
-//                    String modelBody = objectMapper.writeValueAsString(mSplitInfoDetailModel);
-//                    Log.d("SummaryFragment", modelBody);
-//                } catch (JsonProcessingException e) {
-//                    throw new RuntimeException(e);
-//                }
             }
         });
 

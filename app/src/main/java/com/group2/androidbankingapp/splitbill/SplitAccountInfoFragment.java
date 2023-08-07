@@ -77,13 +77,12 @@ public class SplitAccountInfoFragment extends Fragment implements OnAccountSelec
 
         yourEmailEditText.setText(Singleton.getInstance().user.getEmail());
 
-        accountEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+        accountEditText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    AccountModalBottomSheet accountModalBottomSheet = new AccountModalBottomSheet(SplitAccountInfoFragment.this);
-                    accountModalBottomSheet.show(getParentFragmentManager(), "AccountModalBottomSheet");
-                }
+            public void onClick(View v) {
+                AccountModalBottomSheet accountModalBottomSheet = new AccountModalBottomSheet(SplitAccountInfoFragment.this);
+                accountModalBottomSheet.show(getParentFragmentManager(), "AccountModalBottomSheet");
             }
         });
 

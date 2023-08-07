@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface SplitBillService {
-    @POST("/api/splitBill")
+    @POST("/api/split-bill")
     Call<SingleMessageResponseModel> requestSplitBill(@Body SplitInfoDetailModel splitInfoDetailModel);
 }

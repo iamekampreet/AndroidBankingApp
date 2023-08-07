@@ -73,7 +73,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_account"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

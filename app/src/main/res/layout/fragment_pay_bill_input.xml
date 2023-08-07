@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".paybill.PayBillInputFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:contentInsetLeft="0dp"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:title="Pay Bills"
+            app:titleCentered="false" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_from"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="From"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down_24"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_pay_bill_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_pay_bill_start"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_from"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_to"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="To"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down_24"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_pay_bill_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_pay_bill_start"
+        app:layout_constraintTop_toBottomOf="@+id/textField_from">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_to"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_pay_bill_amount"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Amount"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_pay_bill_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_pay_bill_start"
+        app:layout_constraintTop_toBottomOf="@+id/textField_to">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_pay_bill_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_pay_bill_when"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="When"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down_24"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_pay_bill_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_pay_bill_start"
+        app:layout_constraintTop_toBottomOf="@+id/textField_pay_bill_amount">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_pay_bill_when"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_search"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Frequency"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down_24"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_pay_bill_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_pay_bill_start"
+        app:layout_constraintTop_toBottomOf="@+id/textField_pay_bill_when">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edittext_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_pay_bill_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_pay_bill_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <Button
+        android:id="@+id/button_go_to_summary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Next"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_pay_bill_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_pay_bill_start"
+        app:layout_constraintTop_toBottomOf="@+id/textField_search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
