@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".paybill.PayBillFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:expanded="false" >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:title="Pay Bills"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.group2.androidbankingapp.paybill.OptionRowItem
+        android:id="@+id/pay_bill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:optionIcon="@drawable/ic_description_24dp"
+        app:subTitle="Access your payee list"
+        app:title="Pay a bill" />
+
+    <com.group2.androidbankingapp.paybill.OptionRowItem
+        android:id="@+id/add_a_payee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:optionIcon="@drawable/ic_single_user_24dp"
+        app:title="Add a payee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pay_bill" />
+
+    <TextView
+        android:id="@+id/textView_manage_bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Manage Bills"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_a_payee" />
+
+    <com.group2.androidbankingapp.paybill.OptionRowItem
+        android:id="@+id/cancel_payment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:optionEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_manage_bill"
+        app:optionIcon="@drawable/ic_delete_24dp"
+        app:title="Cancel or stop a payment" />
+
+    <com.group2.androidbankingapp.paybill.OptionRowItem
+        android:id="@+id/view_past_payment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancel_payment"
+        app:optionIcon="@drawable/ic_past_24dp"
+        app:title="View Past Payments"
+        app:optionEnabled="false"/>
+
+    <com.group2.androidbankingapp.paybill.OptionRowItem
+        android:id="@+id/view_upcoming_payment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_past_payment"
+        app:optionIcon="@drawable/ic_upcomming_24dp"
+        app:title="View Upcoming Payments" />
+
+    <com.group2.androidbankingapp.paybill.OptionRowItem
+        android:id="@+id/manage_payee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_upcoming_payment"
+        app:optionIcon="@drawable/ic_group_24dp"
+        app:title="Manage Payee"
+        app:optionEnabled="false"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
