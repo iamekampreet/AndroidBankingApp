@@ -8,8 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.group2.androidbankingapp.LoginActivity;
-import com.group2.androidbankingapp.MainActivity;
 import com.group2.androidbankingapp.R;
 
 public class MyBottomNavigationView extends ConstraintLayout {
