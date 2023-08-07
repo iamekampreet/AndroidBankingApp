@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.group2.androidbankingapp.betweenaccounts.TransferBetweenAccountsFragment;
 import com.group2.androidbankingapp.splitbill.SplitBillActivity;
 
 public class MoveMoneyFragment extends Fragment {
@@ -85,5 +86,4 @@ public class MoveMoneyFragment extends Fragment {
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
     }
-
 }

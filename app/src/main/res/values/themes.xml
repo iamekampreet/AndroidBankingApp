@@ -21,4 +21,13 @@
     <style name="roundedFAB">
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="DatePickerTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Customize primary and accent colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>
