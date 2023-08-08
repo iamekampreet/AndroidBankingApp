@@ -36,6 +36,7 @@
                 android:textSize="30sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tv_accLine1Wrapper"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
                 android:layout_marginBottom="2dp">
 
                 <TextView
-                    android:id="@+id/tv_accPersonal"
+                    android:id="@+id/tv_accLine1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Personal (1234)"
@@ -54,7 +55,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/tv_accPersonalBal"
+                    android:id="@+id/tv_accLine1Bal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CAD 1,520.00"
@@ -65,6 +66,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tv_accLine2Wrapper"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,6 +75,7 @@
                 android:layout_marginBottom="2dp">
 
                 <TextView
+                    android:id="@+id/tv_accLine2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Saving (4567)"
@@ -82,6 +85,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_accLine2Bal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CAD 5,100.00"
@@ -92,6 +96,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tv_accLine3Wrapper"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,6 +105,7 @@
                 android:layout_marginBottom="2dp">
 
                 <TextView
+                    android:id="@+id/tv_accLine3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VISA (3416)"
@@ -109,6 +115,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_accLine3Bal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CAD 0.00"
@@ -172,6 +179,7 @@
                     android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -240,6 +248,7 @@
                     android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -256,6 +265,7 @@
                 android:textSize="30sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tv_cardLine1Wrapper1"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -263,6 +273,7 @@
                 android:paddingVertical="15dp">
 
                 <TextView
+                    android:id="@+id/tv_cardLine1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VISA (3416)"
@@ -272,6 +283,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_cardLine1Bal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CAD 10.00"
@@ -282,6 +294,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
+                android:id="@+id/tv_cardLine1Wrapper2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
@@ -301,6 +314,7 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tv_cardLine1Wrapper3"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -336,6 +350,7 @@
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:background="@color/white"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -347,11 +362,13 @@
                 android:textAlignment="center"
                 android:background="@color/white"
                 android:textStyle="bold"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tv_cardLine1Wrapper4"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -530,6 +547,7 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:visibility="gone"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -588,6 +606,7 @@
                     android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
@@ -629,6 +648,7 @@
                     android:textSize="20sp"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/colorPrimary"
+                    android:visibility="invisible"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -645,6 +665,7 @@
                 android:textSize="30sp" />
 
             <ImageButton
+                android:id="@+id/btn_cdic"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"

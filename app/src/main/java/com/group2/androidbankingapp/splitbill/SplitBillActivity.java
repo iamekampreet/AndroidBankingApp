@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -54,6 +55,13 @@ public class SplitBillActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("amount")) {
+            String amount = intent.getStringExtra("amount");
+            splitAmountEditText.setText(amount);
+        }
+
 
         pickFriendsButton.setOnClickListener(view -> {
             enableExpandableAppBar();
