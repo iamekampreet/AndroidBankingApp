@@ -101,7 +101,7 @@ public class PayBillSummaryFragment extends Fragment implements Callback<SingleM
             @Override
             public void onClick(View v) {
                 UserModel userModel = Singleton.getInstance().user;
-                PayBillService payBillService = Singleton.getRetrofitInstance().create(PayBillService.class);
+                PayBillService payBillService = Singleton.getRetrofitInstance(getActivity().getApplicationContext()).create(PayBillService.class);
                 Call<SingleMessageResponseModel> response
                         = payBillService.schedulePayment(
                                 userModel.get_id(),
@@ -137,7 +137,12 @@ public class PayBillSummaryFragment extends Fragment implements Callback<SingleM
             getActivity().getSupportFragmentManager()
                     .popBackStack(MoveMoneyFragment.TAG, POP_BACK_STACK_INCLUSIVE);
         } else {
-            ApiError error = Utils.parseError(response);
+            if (response.raw().code() == 401) {
+                Utils.handleUnauthorizedError(getActivity());
+                return;
+            }
+
+            ApiError error = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("AddPayeeFragment", "Error: " + error.getMessage());
             Toast.makeText(getContext(),
                     "Error: " + error.getMessage(),

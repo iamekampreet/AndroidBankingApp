@@ -1,5 +1,8 @@
 package com.group2.androidbankingapp.utils;
 
+import android.content.Context;
+
+import com.group2.androidbankingapp.api.AuthInterceptor;
 import com.group2.androidbankingapp.models.UserModel;
 
 import okhttp3.OkHttpClient;
@@ -24,13 +27,16 @@ public class Singleton {
         return instance;
     }
 
-    public static synchronized Retrofit getRetrofitInstance() {
+    public static synchronized Retrofit getRetrofitInstance(Context context) {
         if (retrofit == null) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+            AuthInterceptor authInterceptor = new AuthInterceptor(context);
+
             OkHttpClient httpClient = new OkHttpClient.Builder()
                     .addInterceptor(logging)
+                    .addInterceptor(authInterceptor)
                     .build();
 
             retrofit = new retrofit2.Retrofit.Builder()

@@ -83,7 +83,7 @@ public class SignupActivity extends AppCompatActivity {
         mLoginModel.setPassword(password);
         mLoginModel.setLastName(lastName);
 
-        AuthorizeService authorizeService = Singleton.getRetrofitInstance().create(AuthorizeService.class);
+        AuthorizeService authorizeService = Singleton.getRetrofitInstance(getApplicationContext()).create(AuthorizeService.class);
         Call<ResponseBody> response = authorizeService.signupUser(mLoginModel);
 
         response.enqueue(new Callback<ResponseBody>() {

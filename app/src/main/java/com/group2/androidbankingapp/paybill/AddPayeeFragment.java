@@ -59,7 +59,7 @@ public class AddPayeeFragment extends Fragment implements OnPayeeSelectedListene
         TextInputEditText searchEditText = view.findViewById(R.id.edittext_search);
         allPayeeProgressBar = view.findViewById(R.id.progressBar_all_payees);
 
-        PayBillService payBillService = Singleton.getRetrofitInstance().create(PayBillService.class);
+        PayBillService payBillService = Singleton.getRetrofitInstance(getActivity().getApplicationContext()).create(PayBillService.class);
         Call<List<PayeeModel>> allPayee = payBillService.getAllPayee();
 
         searchEditText.addTextChangedListener(new TextWatcher() {
@@ -109,7 +109,11 @@ public class AddPayeeFragment extends Fragment implements OnPayeeSelectedListene
             allPayeeRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
             allPayeeProgressBar.setVisibility(View.INVISIBLE);
         } else {
-            ApiError error = Utils.parseError(response);
+            if (response.raw().code() == 401) {
+                Utils.handleUnauthorizedError(getActivity());
+                return;
+            }
+            ApiError error = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("AddPayeeFragment", "Error: " + error.getMessage());
             Toast.makeText(getContext(),
                     "Error: " + error.getMessage(),

@@ -45,7 +45,7 @@ public class UpcomingPaymentsFragment extends Fragment implements Callback<List<
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        PayBillService payBillService = Singleton.getRetrofitInstance().create(PayBillService.class);
+        PayBillService payBillService = Singleton.getRetrofitInstance(getActivity().getApplicationContext()).create(PayBillService.class);
         String userId = Singleton.getInstance().user.get_id();
         Call<List<PayBillModel>> request = payBillService.getAllUpcomingPayment(userId);
 
@@ -75,7 +75,7 @@ public class UpcomingPaymentsFragment extends Fragment implements Callback<List<
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
-            ApiError apiError = Utils.parseError(response);
+            ApiError apiError = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("UpcomingPaymentsFragment", apiError.getMessage());
             Toast.makeText(getContext(),
                     "Error: " + apiError.getMessage(),
