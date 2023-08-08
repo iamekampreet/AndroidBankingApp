@@ -62,11 +62,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     protected void signInClick(){
-//        if (SKIP_LOGIN) {
-//            Utils.dummyLogin();
-//            startActivity(new Intent(this, MainActivity.class));
-//            return;
-//        }
+        if (SKIP_LOGIN) {
+            Utils.dummyLogin();
+            startActivity(new Intent(this, MainActivity.class));
+            return;
+        }
 
         String email = text_email.getText().toString(); //santosh.dhakal07@gmail.com
         String password = text_password.getText().toString(); //strong-password
