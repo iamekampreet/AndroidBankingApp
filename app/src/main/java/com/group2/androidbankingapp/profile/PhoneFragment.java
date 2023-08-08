@@ -1,6 +1,5 @@
-package com.group2.androidbankingapp;
+package com.group2.androidbankingapp.profile;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,25 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-public class AccountFragment extends Fragment {
+import com.group2.androidbankingapp.R;
+
+public class PhoneFragment extends Fragment {
+
     View rootView;
     ImageView returnBack;
+    TextView returnBack2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_account, container, false);
+        rootView = inflater.inflate(R.layout.fragment_phone, container, false);
 
         returnBack = rootView.findViewById(R.id.returnBack);
         returnBack.setOnClickListener(v -> returnBackClickHandler());
 
+        returnBack2 = rootView.findViewById(R.id.returnBack2);
+        returnBack2.setOnClickListener(v -> returnBackClickHandler());
+
         return rootView;
     }
 
-    public void returnBackClickHandler() {
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
+    public void returnBackClickHandler(){
+        getParentFragmentManager().popBackStack();
     }
 }

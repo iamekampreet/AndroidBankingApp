@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.ProfileFragment">
+
+    <ScrollView
+        android:id="@+id/parentSV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parentCL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/topTB"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/returnBack"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/return_back_arrow_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/returnBack2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <ImageView
+                android:id="@+id/yourProfileIcon"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/your_profile_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topTB"
+                android:layout_marginTop="40dp"
+                />
+
+            <TextView
+                android:id="@+id/yourProfileTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/yourProfileIcon"
+                android:layout_marginTop="40dp"
+                android:textSize="35sp"
+                />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="40dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/yourProfileTV"
+                />
+
+            <ImageView
+                android:id="@+id/nameIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/user_icon_blue"
+                app:layout_constraintStart_toStartOf="@id/view1"
+                app:layout_constraintTop_toTopOf="@id/view1"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                app:layout_constraintStart_toEndOf="@id/nameIcon"
+                app:layout_constraintTop_toTopOf="@id/view1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/userNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NAME OF PERSON"
+                app:layout_constraintStart_toStartOf="@id/view1"
+                app:layout_constraintTop_toBottomOf="@id/nameIcon"
+                android:textSize="20sp"
+                android:layout_margin="20dp"
+                />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="40dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/view1"
+                />
+
+            <ImageView
+                android:id="@+id/addressIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/home_icon_blue"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                app:layout_constraintTop_toTopOf="@id/view2"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/addressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                app:layout_constraintStart_toEndOf="@id/addressIcon"
+                app:layout_constraintTop_toTopOf="@id/view2"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/manageAddressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manage_hyperlink"
+                app:layout_constraintTop_toTopOf="@id/view2"
+                app:layout_constraintEnd_toStartOf="@id/chevronManageAddressIcon"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+            />
+
+            <ImageView
+                android:id="@+id/chevronManageAddressIcon"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/baseline_chevron_right_24"
+                app:layout_constraintTop_toTopOf="@id/view2"
+                app:layout_constraintEnd_toEndOf="@id/view2"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/homeAddressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Address"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                app:layout_constraintTop_toBottomOf="@id/addressIcon"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/homeAddressTV2"
+                android:text="123, Some St.,\nSome City, ON"
+                app:layout_constraintTop_toBottomOf="@id/homeAddressTV"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/mailingAddressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mailing Address"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                app:layout_constraintTop_toBottomOf="@id/homeAddressTV2"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mailingAddressTV2"
+                android:text="123, Some St.,\nSome City, ON"
+                app:layout_constraintTop_toBottomOf="@id/mailingAddressTV"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                android:textSize="18sp"
+                />
+\
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="40dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/view2"
+                />
+
+            <ImageView
+                android:id="@+id/phoneIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/phone_icon_blue"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toTopOf="@id/view3"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/phoneTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                app:layout_constraintStart_toEndOf="@id/phoneIcon"
+                app:layout_constraintTop_toTopOf="@id/view3"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/managePhoneTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manage_hyperlink"
+                app:layout_constraintTop_toTopOf="@id/view3"
+                app:layout_constraintEnd_toStartOf="@id/chevronManagePhoneIcon"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/chevronManagePhoneIcon"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/baseline_chevron_right_24"
+                app:layout_constraintTop_toTopOf="@id/view3"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/primaryEmailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home (Primary)"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/phoneIcon"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/primaryEmailTV2"
+                android:text="(123) 456 7890"
+                app:layout_constraintTop_toBottomOf="@id/primaryEmailTV"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                android:textSize="18sp"
+                />
+
+
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="40dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/view3"
+                />
+
+            <ImageView
+                android:id="@+id/emailIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/email_icon_blue"
+                app:layout_constraintStart_toStartOf="@id/view4"
+                app:layout_constraintTop_toTopOf="@id/view4"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/emailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                app:layout_constraintStart_toEndOf="@id/emailIcon"
+                app:layout_constraintTop_toTopOf="@id/view4"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/manageEmailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manage_hyperlink"
+                app:layout_constraintTop_toTopOf="@id/view4"
+                app:layout_constraintEnd_toStartOf="@id/chevronManageEmailIcon"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/chevronManageEmailIcon"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/baseline_chevron_right_24"
+                app:layout_constraintTop_toTopOf="@id/view4"
+                app:layout_constraintEnd_toEndOf="@id/view4"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:id="@+id/emailPrimaryTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Primary"
+                app:layout_constraintStart_toStartOf="@id/view4"
+                app:layout_constraintTop_toBottomOf="@id/emailIcon"
+                android:layout_margin="20dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailPrimaryTV2"
+                android:text="test@gamil.com"
+                app:layout_constraintTop_toBottomOf="@id/emailPrimaryTV"
+                app:layout_constraintStart_toStartOf="@id/view4"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                android:textSize="18sp"
+                />
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/view4"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="120dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,12 +20,13 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/topTB"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="@color/colorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/returnBack"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:adjustViewBounds="true"
@@ -62,7 +63,7 @@
                 android:layout_marginStart="35dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/user_with_circle_icon_blue"
-                app:layout_constraintBottom_toTopOf="@+id/ProfileTV"
+                app:layout_constraintBottom_toTopOf="@+id/profileTV"
                 app:layout_constraintStart_toStartOf="@+id/view3" />
 
 
@@ -72,7 +73,7 @@
                 android:layout_height="60dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/question_icon_blue"
-                app:layout_constraintBottom_toTopOf="@+id/HelpTV"
+                app:layout_constraintBottom_toTopOf="@+id/helpTV"
                 app:layout_constraintEnd_toStartOf="@id/settingsIcon"
                 app:layout_constraintStart_toEndOf="@+id/profileIcon" />
 
@@ -87,7 +88,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/ProfileTV"
+                android:id="@+id/profileTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -98,7 +99,7 @@
                 app:layout_constraintStart_toStartOf="@+id/view2" />
 
             <TextView
-                android:id="@+id/HelpTV"
+                android:id="@+id/helpTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -107,7 +108,7 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/view2"
                 app:layout_constraintEnd_toStartOf="@+id/settingsTV"
-                app:layout_constraintStart_toEndOf="@id/ProfileTV" />
+                app:layout_constraintStart_toEndOf="@id/profileTV" />
 
             <TextView
                 android:id="@+id/settingsTV"
@@ -349,7 +350,7 @@
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/cart_with_circle_icon_blue"
                 app:layout_constraintBottom_toBottomOf="@+id/view16"
-                app:layout_constraintEnd_toStartOf="@+id/openAccountTV"
+                app:layout_constraintEnd_toStartOf="@+id/exploreProductsTV"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view15" />
 
@@ -361,7 +362,7 @@
                 android:text="Explore Products"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/view16"
-                app:layout_constraintStart_toEndOf="@+id/openAccountIcon"
+                app:layout_constraintStart_toEndOf="@+id/exploreProductsIcon"
                 app:layout_constraintTop_toBottomOf="@+id/view15" />
 
             <View
