@@ -93,7 +93,7 @@ public class AddPayeeDescriptionFragment extends DialogFragment implements Callb
                 payeeModel.setDescription(description);
                 updateUserPayeeProgressBar.setVisibility(View.VISIBLE);
 
-                PayBillService service = Singleton.getRetrofitInstance().create(PayBillService.class);
+                PayBillService service = Singleton.getRetrofitInstance(getActivity().getApplicationContext()).create(PayBillService.class);
                 String userId = Singleton.getInstance().user.get_id();
                 Call<UserModel> response = service.updateUserPayee(userId, payeeModel);
                 response.enqueue(AddPayeeDescriptionFragment.this);
@@ -120,7 +120,11 @@ public class AddPayeeDescriptionFragment extends DialogFragment implements Callb
             this.dismiss();
             getActivity().getSupportFragmentManager().popBackStack();
         } else {
-            ApiError error = Utils.parseError(response);
+            if (response.raw().code() == 401) {
+                Utils.handleUnauthorizedError(getActivity());
+                return;
+            }
+            ApiError error = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("AddPayeeDescriptionFragment", "Error: " + error.getMessage());
             Toast.makeText(getContext(),
                     "Error: " + error.getMessage(),

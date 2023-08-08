@@ -23,9 +23,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.snackbar.Snackbar;
 import com.group2.androidbankingapp.R;
+import com.group2.androidbankingapp.api.ApiError;
 import com.group2.androidbankingapp.api.SingleMessageResponseModel;
 import com.group2.androidbankingapp.api.SplitBillService;
 import com.group2.androidbankingapp.utils.Singleton;
+import com.group2.androidbankingapp.utils.Utils;
 
 import org.parceler.Parcels;
 
@@ -98,7 +100,7 @@ public class SummaryFragment extends Fragment {
             public void onClick(View v) {
                 apiProgressBar.setVisibility(View.VISIBLE);
 
-                SplitBillService splitBillService = Singleton.getRetrofitInstance().create(SplitBillService.class);
+                SplitBillService splitBillService = Singleton.getRetrofitInstance(getActivity().getApplicationContext()).create(SplitBillService.class);
                 Call<SingleMessageResponseModel> response = splitBillService.requestSplitBill(mSplitInfoDetailModel);
 
                 response.enqueue(new Callback<SingleMessageResponseModel>() {
@@ -117,8 +119,15 @@ public class SummaryFragment extends Fragment {
                                     response.body().getMessage(),
                                     Toast.LENGTH_LONG).show();
                         } else {
+                            if (response.raw().code() == 401) {
+                                Utils.handleUnauthorizedError(getActivity());
+                                return;
+                            }
+
+                            ApiError error = Utils.parseError(response, getActivity().getApplicationContext());
+                            Log.d("SummaryFragment", "Error: " + error.getMessage());
                             Toast.makeText(getContext(),
-                                    response.message(),
+                                    "Error: " + error.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
                     }

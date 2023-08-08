@@ -1,9 +1,11 @@
 package com.group2.androidbankingapp.authorization;
 
+import com.group2.androidbankingapp.models.UserModel;
+
 public class LoginResponseModel {
     String errorCode;
-    String userId;
-    String email;
+
+    UserModel user;
     String token;
 
     public LoginResponseModel() {
@@ -26,19 +28,11 @@ public class LoginResponseModel {
         this.token = token;
     }
 
-    public String getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 }

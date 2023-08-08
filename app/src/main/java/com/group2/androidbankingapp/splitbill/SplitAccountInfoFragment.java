@@ -74,9 +74,16 @@ public class SplitAccountInfoFragment extends Fragment implements OnAccountSelec
         TextInputEditText noteEditText = view.findViewById(R.id.edittext_note);
         TextInputEditText yourEmailEditText = view.findViewById(R.id.edittext_your_email);
         Button nextButton = view.findViewById(R.id.button_next_account_info);
+        Button editFriends = view.findViewById(R.id.button_edit_friends);
 
         yourEmailEditText.setText(Singleton.getInstance().user.getEmail());
 
+        editFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
 
         accountEditText.setOnClickListener(new View.OnClickListener() {
             @Override

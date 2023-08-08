@@ -15,7 +15,9 @@ import android.widget.TextView;
 import com.group2.androidbankingapp.api.AuthorizeService;
 import com.group2.androidbankingapp.authorization.LoginModel;
 import com.group2.androidbankingapp.authorization.LoginResponseModel;
+import com.group2.androidbankingapp.utils.SessionManager;
 import com.group2.androidbankingapp.utils.Singleton;
+import com.group2.androidbankingapp.utils.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,10 +62,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     protected void signInClick(){
-        if (SKIP_LOGIN) {
-            startActivity(new Intent(this, MainActivity.class));
-            return;
-        }
+//        if (SKIP_LOGIN) {
+//            Utils.dummyLogin();
+//            startActivity(new Intent(this, MainActivity.class));
+//            return;
+//        }
 
         String email = text_email.getText().toString(); //santosh.dhakal07@gmail.com
         String password = text_password.getText().toString(); //strong-password
@@ -76,13 +79,16 @@ public class LoginActivity extends AppCompatActivity {
         mLoginModel.setEmail(email);
         mLoginModel.setPassword(password);
 
-        AuthorizeService authorizeService = Singleton.getRetrofitInstance().create(AuthorizeService.class);
+        AuthorizeService authorizeService = Singleton.getRetrofitInstance(getApplicationContext()).create(AuthorizeService.class);
         Call<LoginResponseModel> response = authorizeService.loginUser(mLoginModel);
         Intent intent = new Intent(this, MainActivity.class);
         response.enqueue(new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
                 if (response.isSuccessful()) {
+                    Singleton.getInstance().user = response.body().getUser();
+                    SessionManager sessionManager = new SessionManager(getApplicationContext());
+                    sessionManager.saveAuthToken(response.body().getToken());
                     startActivity(intent);
                 } else {
                     tv_error.setVisibility(View.VISIBLE);
