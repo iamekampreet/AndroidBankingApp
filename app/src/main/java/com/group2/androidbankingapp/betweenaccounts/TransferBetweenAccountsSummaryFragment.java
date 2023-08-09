@@ -160,6 +160,7 @@ public class TransferBetweenAccountsSummaryFragment extends Fragment implements 
                     Toast.LENGTH_LONG).show();
             getActivity().getSupportFragmentManager()
                     .popBackStack(MoveMoneyFragment.TAG, POP_BACK_STACK_INCLUSIVE);
+
         } else {
             ApiError error = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("AddPayeeFragment", "Error: " + error.getMessage());

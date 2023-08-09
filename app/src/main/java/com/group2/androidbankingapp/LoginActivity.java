@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private final boolean SKIP_LOGIN = true; // disable login verification for development
+    private final boolean SKIP_LOGIN = false; // disable login verification for development
     private LoginModel mLoginModel;
 
     EditText text_email;

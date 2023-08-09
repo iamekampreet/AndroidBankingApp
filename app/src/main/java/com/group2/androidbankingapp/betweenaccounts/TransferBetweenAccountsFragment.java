@@ -81,7 +81,6 @@ public class TransferBetweenAccountsFragment extends Fragment {
         constraintContinue = rootView.findViewById(R.id.constraint_continue);
         tvFrequencyValue = rootView.findViewById(R.id.tv_frequency_value);
 
-
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
