@@ -121,7 +121,7 @@ public class TransferBetweenAccountsSummaryFragment extends Fragment implements 
             @Override
             public void onClick(View v) {
                 UserModel userModel = Singleton.getInstance().user;
-                TransferBetweenAccountsService transferBetweenAccountsService = Singleton.getRetrofitInstance().create(TransferBetweenAccountsService.class);
+                TransferBetweenAccountsService transferBetweenAccountsService = Singleton.getRetrofitInstance(getActivity().getApplicationContext()).create(TransferBetweenAccountsService.class);
                 Call<SingleMessageResponseModel> response
                         = transferBetweenAccountsService.schedulePayment(
                         userModel.get_id(),
@@ -161,7 +161,7 @@ public class TransferBetweenAccountsSummaryFragment extends Fragment implements 
             getActivity().getSupportFragmentManager()
                     .popBackStack(MoveMoneyFragment.TAG, POP_BACK_STACK_INCLUSIVE);
         } else {
-            ApiError error = Utils.parseError(response);
+            ApiError error = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("AddPayeeFragment", "Error: " + error.getMessage());
             Toast.makeText(getContext(),
                     "Error: " + error.getMessage(),
