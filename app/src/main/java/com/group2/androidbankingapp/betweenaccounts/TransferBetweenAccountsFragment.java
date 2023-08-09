@@ -34,8 +34,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.group2.androidbankingapp.MoveMoneyFragment;
 import com.group2.androidbankingapp.R;
 import com.group2.androidbankingapp.models.AccountInfo;
+import com.group2.androidbankingapp.paybill.PayBillSummaryFragment;
 import com.group2.androidbankingapp.utils.Singleton;
 
 import java.text.SimpleDateFormat;
@@ -44,6 +46,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class TransferBetweenAccountsFragment extends Fragment {
+    TransferBetweenAccountsModel transferBetweenAccountsModel = new TransferBetweenAccountsModel();
     private PopupWindow selectAccountPopupWindow;
     private PopupWindow frequencyPopupWindow;
     private LayoutInflater inflater;
@@ -104,6 +107,7 @@ public class TransferBetweenAccountsFragment extends Fragment {
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     validateAmount();
+
                     // Hide the soft keyboard
                     InputMethodManager imm = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
@@ -130,7 +134,6 @@ public class TransferBetweenAccountsFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
             }
         });
-
 
 
         this.inflater = inflater;
@@ -173,8 +176,10 @@ public class TransferBetweenAccountsFragment extends Fragment {
                 // Check if it's from the "From" dropdown or the "To" dropdown
                 if (isFromDropdown) {
                     onFromAccountSelected(accountInfo);
+                    transferBetweenAccountsModel.accountFrom = accountInfo;
                 } else {
                     onToAccountSelected(accountInfo);
+                    transferBetweenAccountsModel.accountTo = accountInfo;
                 }
 
                 // Dismiss the popup window after selection
@@ -204,59 +209,25 @@ public class TransferBetweenAccountsFragment extends Fragment {
         TextView tvOnce = frequencyPopupView.findViewById(R.id.tv_once);
         TextView tvMonthly = frequencyPopupView.findViewById(R.id.tv_monthly);
         TextView tvWeekly = frequencyPopupView.findViewById(R.id.tv_weekly);
-        TextView tvBiMonthly = frequencyPopupView.findViewById(R.id.tv_bi_monthly);
-        TextView tvBiWeekly = frequencyPopupView.findViewById(R.id.tv_bi_weekly);
-        TextView tvTwiceMonthly = frequencyPopupView.findViewById(R.id.tv_twice_monthly);
-        TextView tvMonthEnd = frequencyPopupView.findViewById(R.id.tv_month_end);
-        TextView tvAnnually = frequencyPopupView.findViewById(R.id.tv_annually);
-        TextView tvSemiAnnually = frequencyPopupView.findViewById(R.id.tv_semi_annually);
 
         // Set click listeners for each frequency option
         tvOnce.setOnClickListener(v -> {
             updateFrequencyTextView("Once");
+            transferBetweenAccountsModel.frequency = 0;
             frequencyPopupWindow.dismiss();
         });
 
         tvMonthly.setOnClickListener(v -> {
             updateFrequencyTextView("Monthly");
+            transferBetweenAccountsModel.frequency = 2;
             frequencyPopupWindow.dismiss();
         });
 
         tvWeekly.setOnClickListener(v -> {
             updateFrequencyTextView("Weekly");
+            transferBetweenAccountsModel.frequency = 1;
             frequencyPopupWindow.dismiss();
         });
-
-        tvBiMonthly.setOnClickListener(v -> {
-            updateFrequencyTextView("Bi-Monthly");
-            frequencyPopupWindow.dismiss();
-        });
-
-        tvBiWeekly.setOnClickListener(v -> {
-            updateFrequencyTextView("Bi-Weekly");
-            frequencyPopupWindow.dismiss();
-        });
-
-        tvTwiceMonthly.setOnClickListener(v -> {
-            updateFrequencyTextView("Twice Monthly");
-            frequencyPopupWindow.dismiss();
-        });
-
-        tvMonthEnd.setOnClickListener(v -> {
-            updateFrequencyTextView("Month End");
-            frequencyPopupWindow.dismiss();
-        });
-
-        tvAnnually.setOnClickListener(v -> {
-            updateFrequencyTextView("Annually");
-            frequencyPopupWindow.dismiss();
-        });
-
-        tvSemiAnnually.setOnClickListener(v -> {
-            updateFrequencyTextView("Semi Annually");
-            frequencyPopupWindow.dismiss();
-        });
-
 
         ImageView closeFrequency = frequencyPopupView.findViewById(R.id.img_close_popup);
         closeFrequency.setOnClickListener(popupView1 -> frequencyPopupWindow.dismiss());
@@ -314,6 +285,7 @@ public class TransferBetweenAccountsFragment extends Fragment {
         String myFormat = "MMM dd, yyyy"; // Format for displaying the date
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
         tvDate.setText(sdf.format(calendar.getTime()));
+        transferBetweenAccountsModel.when = calendar.getTime();
     }
 
     private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -382,7 +354,6 @@ public class TransferBetweenAccountsFragment extends Fragment {
     }
 
 
-
     private void validateAmount() {
         // Show an error message if the amount is not valid (empty) or less than or equal to zero
         if (!isAmountValid()) {
@@ -394,7 +365,7 @@ public class TransferBetweenAccountsFragment extends Fragment {
     }
 
 
-    private boolean isFromAndToDifferent(){
+    private boolean isFromAndToDifferent() {
         return !tvFromSelectedAccount.getText().toString().equals(tvToSelectedAccount.getText().toString());
     }
 
@@ -403,58 +374,27 @@ public class TransferBetweenAccountsFragment extends Fragment {
         double amount = isAmountValid ? Double.parseDouble(etAmount.getText().toString()) : 0;
         boolean isAmountGreaterThanZero = amount > 0;
 
+        if (isAmountValid && isAmountGreaterThanZero) {
+            String formattedAmount = String.format("%.2f", amount);
+            transferBetweenAccountsModel.amount = Double.parseDouble(formattedAmount);
+        }
+
         return isAmountValid && isAmountGreaterThanZero;
     }
 
     public void onContinueButtonClick() {
         // Check if all validations are successful before proceeding
         if (isFromAndToDifferent() && isAmountValid()) {
-            double amount = Double.parseDouble(etAmount.getText().toString());
-            String roundedAmount = String.format("%.2f", amount);
-
-            String fromAccount = tvFromSelectedAccount.getText().toString();
-            String toAccount = tvToSelectedAccount.getText().toString();
-            String date = tvDate.getText().toString();
-            String frequency = tvFrequencyValue.getText().toString();
 
             // Create an instance of the transfer fragment with arguments
-            TransferFragment transferFragment = TransferFragment.newInstance(fromAccount, toAccount, roundedAmount, date, frequency);
+            TransferBetweenAccountsSummaryFragment transferBetweenAccountsSummaryFragment = TransferBetweenAccountsSummaryFragment.newInstance(transferBetweenAccountsModel);
 
-            // Get the FragmentManager and start a new FragmentTransaction
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            // Replace the current fragment with the transfer fragment
-            fragmentTransaction.replace(R.id.fragment_container, transferFragment);
-
-            // Add the transaction to the back stack so the user can navigate back
-            fragmentTransaction.addToBackStack(null);
-
-            // Commit the transaction
-            fragmentTransaction.commit();
-        } else {
-            // Show an error message or handle the case where the validations fail
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, transferBetweenAccountsSummaryFragment)
+                    .addToBackStack(MoveMoneyFragment.TAG)
+                    .commit();
         }
+
     }
-
-
-    // Function to navigate to TransferCommitFragment and pass data as arguments
-    private void navigateToTransferCommitFragment(String fromAccount, String toAccount, double amount, String date, String frequency) {
-        TransferFragment transferCommitFragment = new TransferFragment();
-        Bundle args = new Bundle();
-        args.putString("FROM_ACCOUNT", fromAccount);
-        args.putString("TO_ACCOUNT", toAccount);
-        args.putDouble("AMOUNT", amount);
-        args.putString("DATE", date);
-        args.putString("FREQUENCY", frequency);
-        transferCommitFragment.setArguments(args);
-
-        // Navigate to the TransferCommitFragment
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, transferCommitFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
 }
