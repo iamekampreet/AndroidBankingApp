@@ -48,7 +48,7 @@
             </androidx.appcompat.widget.Toolbar>
 
             <TextView
-                android:id="@+id/EmailTV"
+                android:id="@+id/AddressTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -61,8 +61,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/emailText"
-                app:layout_constraintTop_toBottomOf="@id/EmailTV"
+                android:id="@+id/addressText"
+                app:layout_constraintTop_toBottomOf="@id/AddressTV"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/phoneText"
@@ -74,9 +74,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/yourEmailAddressesTV"
+                android:id="@+id/rbcAccountsTV"
                 android:text="Your Phone Numbers"
-                app:layout_constraintTop_toBottomOf="@id/emailText"
+                app:layout_constraintTop_toBottomOf="@id/addressText"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -91,13 +91,13 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="30dp"
                 android:background="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/yourEmailAddressesTV"
+                app:layout_constraintTop_toBottomOf="@id/rbcAccountsTV"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/primaryEmailTV"
+                android:id="@+id/homeAddressLabelTV"
                 android:text="Home (Primary)"
                 app:layout_constraintStart_toStartOf="@id/view1"
                 app:layout_constraintTop_toTopOf="@id/view1"
@@ -117,12 +117,13 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/primaryEmailTV2"
+                android:id="@+id/homePrimaryPhoneValueTV"
                 android:text="(437)261-1240"
-                app:layout_constraintTop_toBottomOf="@id/primaryEmailTV"
+                app:layout_constraintTop_toBottomOf="@id/homeAddressLabelTV"
                 app:layout_constraintStart_toStartOf="@id/view1"
+                app:layout_constraintEnd_toEndOf="@id/view1"
                 android:layout_margin="15dp"
                 android:textSize="20sp"
                 />
@@ -177,12 +178,12 @@
                 android:layout_height="40dp"
                 android:layout_margin="15dp"
                 android:src="@drawable/light_bulb_icon"
-                app:layout_constraintBottom_toTopOf="@+id/whyUpdateEmailTV2"
+                app:layout_constraintBottom_toTopOf="@+id/whyUpdateAddressTV2"
                 app:layout_constraintStart_toStartOf="@id/view3"
                 app:layout_constraintTop_toTopOf="@id/view3" />
 
             <TextView
-                android:id="@+id/whyUpdateEmailTV"
+                android:id="@+id/whyUpdateAddressTV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
@@ -196,9 +197,9 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/whyUpdateEmailTV2"
+                android:id="@+id/whyUpdateAddressTV2"
                 android:text="@string/whyKeepPhoneUpdated"
-                app:layout_constraintTop_toBottomOf="@id/whyUpdateEmailTV"
+                app:layout_constraintTop_toBottomOf="@id/whyUpdateAddressTV"
                 app:layout_constraintStart_toStartOf="@id/view3"
                 app:layout_constraintEnd_toEndOf="@id/view3"
                 android:layout_margin="15dp"
@@ -218,3 +219,5 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

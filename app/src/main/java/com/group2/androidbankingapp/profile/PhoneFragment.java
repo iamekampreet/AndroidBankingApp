@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.group2.androidbankingapp.R;
+import com.group2.androidbankingapp.models.UserModel;
+import com.group2.androidbankingapp.utils.Singleton;
 
 public class PhoneFragment extends Fragment {
 
     View rootView;
     ImageView returnBack;
-    TextView returnBack2;
+    TextView returnBack2, homePrimaryPhoneValueTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +31,11 @@ public class PhoneFragment extends Fragment {
 
         returnBack2 = rootView.findViewById(R.id.returnBack2);
         returnBack2.setOnClickListener(v -> returnBackClickHandler());
+
+        UserModel user = Singleton.getInstance().user;
+
+        homePrimaryPhoneValueTV = rootView.findViewById(R.id.homePrimaryPhoneValueTV);
+        homePrimaryPhoneValueTV.setText(user.getPhone());
 
         return rootView;
     }

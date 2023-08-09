@@ -11,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.group2.androidbankingapp.R;
+import com.group2.androidbankingapp.models.UserModel;
+import com.group2.androidbankingapp.utils.Singleton;
 
 public class EmailFragment extends Fragment {
     View rootView;
     ImageView returnBack;
-    TextView returnBack2;
+    TextView returnBack2, primaryEmailValueTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,6 +30,11 @@ public class EmailFragment extends Fragment {
 
         returnBack2 = rootView.findViewById(R.id.returnBack2);
         returnBack2.setOnClickListener(v -> returnBackClickHandler());
+
+        UserModel user = Singleton.getInstance().user;
+
+        primaryEmailValueTV = rootView.findViewById(R.id.primaryEmailValueTV);
+        primaryEmailValueTV.setText(user.getEmail());
 
         return rootView;
     }

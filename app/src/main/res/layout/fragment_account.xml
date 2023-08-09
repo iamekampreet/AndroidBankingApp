@@ -85,26 +85,26 @@
 
 
             <ImageView
-                android:id="@+id/tranLimitImg"
+                android:id="@+id/signOutIcon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/transaction_limit_icon_blue"
                 app:layout_constraintBottom_toBottomOf="@+id/view4"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintEnd_toStartOf="@+id/signOutTV"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/signOutTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="Daily Transaction Limits"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/view4"
-                app:layout_constraintStart_toEndOf="@+id/tranLimitImg"
+                app:layout_constraintStart_toEndOf="@+id/signOutIcon"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
 
             <View
@@ -160,7 +160,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view8" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/chkActNumTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -172,7 +172,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view8" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/chkActBalTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -211,7 +211,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view10" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/savActNumTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -223,7 +223,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view10" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/savActBalTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -258,11 +258,11 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/view12"
-                app:layout_constraintEnd_toStartOf="@id/textView11"
+                app:layout_constraintEnd_toStartOf="@id/bankingTotalTV"
                 app:layout_constraintTop_toTopOf="@+id/view12" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/bankingTotalTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -320,14 +320,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginBottom="30dp"
-                android:text="Savings"
+                android:text="VISA"
                 android:textSize="22sp"
                 app:layout_constraintBottom_toTopOf="@+id/view17"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view16" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/creditCardAccNumTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -339,7 +339,7 @@
                 app:layout_constraintTop_toTopOf="@+id/view16" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/creditCardValTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -374,11 +374,11 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/view18"
-                app:layout_constraintEnd_toStartOf="@id/textView17"
+                app:layout_constraintEnd_toStartOf="@id/cardsTotalTV"
                 app:layout_constraintTop_toTopOf="@+id/view18" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/cardsTotalTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"

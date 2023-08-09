@@ -12,11 +12,13 @@ import android.widget.TextView;
 
 import com.group2.androidbankingapp.MoreFragment;
 import com.group2.androidbankingapp.R;
+import com.group2.androidbankingapp.models.UserModel;
+import com.group2.androidbankingapp.utils.Singleton;
 
 public class ProfileFragment extends Fragment {
     View rootView;
     ImageView returnBack, chevronManagePhoneIcon, chevronManageEmailIcon, chevronManageAddressIcon;
-    TextView returnBack2, managePhoneTV, manageEmailTV, manageAddressTV;
+    TextView returnBack2, managePhoneTV, manageEmailTV, manageAddressTV, userNameTV, homeAddressValTV, mailingAddressValTV, homePrimaryPhoneValTV, emailPrimaryValTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +50,22 @@ public class ProfileFragment extends Fragment {
         chevronManageAddressIcon = rootView.findViewById(R.id.chevronManageAddressIcon);
         chevronManageAddressIcon.setOnClickListener(v -> manageAddressClickHandler());
 
+        UserModel user = Singleton.getInstance().user;
+
+        userNameTV = rootView.findViewById(R.id.userNameTV);
+        userNameTV.setText(user.getDisplayName());
+
+        homeAddressValTV = rootView.findViewById(R.id.homeAddressValTV);
+        homeAddressValTV.setText(user.getAddress());
+
+        mailingAddressValTV = rootView.findViewById(R.id.mailingAddressValTV);
+        mailingAddressValTV.setText(user.getAddress());
+
+        homePrimaryPhoneValTV = rootView.findViewById(R.id.homeAddressValueTV);
+        homePrimaryPhoneValTV.setText(user.getPhone());
+
+        emailPrimaryValTV = rootView.findViewById(R.id.emailPrimaryValTV);
+        emailPrimaryValTV.setText(user.getEmail());
 
         return rootView;
     }

@@ -105,11 +105,12 @@
 
             <TextView
                 android:id="@+id/userNameTV"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="NAME OF PERSON"
+                android:text="ALLA-ANASTASIIA GNATKIV"
                 app:layout_constraintStart_toStartOf="@id/view1"
                 app:layout_constraintTop_toBottomOf="@id/nameIcon"
+                app:layout_constraintEnd_toEndOf="@id/view1"
                 android:textSize="20sp"
                 android:layout_margin="20dp"
                 />
@@ -117,7 +118,7 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="240dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="40dp"
                 android:background="@color/white"
@@ -182,16 +183,16 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/homeAddressValTV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/homeAddressTV2"
-                android:text="123, Some St.,\nSome City, ON"
-                app:layout_constraintTop_toBottomOf="@id/homeAddressTV"
-                app:layout_constraintStart_toStartOf="@id/view2"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="5dp"
+                android:text="123, Some St.,Some City, ON"
                 android:textSize="18sp"
-                />
+                app:layout_constraintEnd_toEndOf="@+id/view2"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                app:layout_constraintTop_toBottomOf="@id/homeAddressTV" />
 
             <TextView
                 android:id="@+id/mailingAddressTV"
@@ -199,23 +200,23 @@
                 android:layout_height="wrap_content"
                 android:text="Mailing Address"
                 app:layout_constraintStart_toStartOf="@id/view2"
-                app:layout_constraintTop_toBottomOf="@id/homeAddressTV2"
+                app:layout_constraintTop_toBottomOf="@id/homeAddressValTV"
                 android:layout_margin="20dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/mailingAddressValTV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/mailingAddressTV2"
-                android:text="123, Some St.,\nSome City, ON"
-                app:layout_constraintTop_toBottomOf="@id/mailingAddressTV"
-                app:layout_constraintStart_toStartOf="@id/view2"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="5dp"
+                android:text="123, Some St.,Some City, ON"
                 android:textSize="18sp"
-                />
+                app:layout_constraintEnd_toEndOf="@+id/view2"
+                app:layout_constraintStart_toStartOf="@id/view2"
+                app:layout_constraintTop_toBottomOf="@id/mailingAddressTV" />
 \
 
             <View
@@ -274,7 +275,7 @@
                 />
 
             <TextView
-                android:id="@+id/primaryEmailTV"
+                android:id="@+id/homeAddressLabelTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home (Primary)"
@@ -288,9 +289,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/primaryEmailTV2"
+                android:id="@+id/homeAddressValueTV"
                 android:text="(123) 456 7890"
-                app:layout_constraintTop_toBottomOf="@id/primaryEmailTV"
+                app:layout_constraintTop_toBottomOf="@id/homeAddressLabelTV"
                 app:layout_constraintStart_toStartOf="@id/view3"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="5dp"
@@ -367,16 +368,16 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/emailPrimaryValTV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/emailPrimaryTV2"
-                android:text="test@gamil.com"
-                app:layout_constraintTop_toBottomOf="@id/emailPrimaryTV"
-                app:layout_constraintStart_toStartOf="@id/view4"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="5dp"
+                android:text="test@gamil.com"
                 android:textSize="18sp"
-                />
+                app:layout_constraintStart_toStartOf="@id/view4"
+                app:layout_constraintEnd_toEndOf="@id/view4"
+                app:layout_constraintTop_toBottomOf="@id/emailPrimaryTV" />
 
 
             <View

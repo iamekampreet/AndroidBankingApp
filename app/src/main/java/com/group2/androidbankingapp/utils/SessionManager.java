@@ -2,6 +2,7 @@ package com.group2.androidbankingapp.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.group2.androidbankingapp.R;
 
@@ -25,4 +26,6 @@ public class SessionManager {
     public String fetchAuthToken() {
         return prefs.getString(USER_TOKEN, null);
     }
+
+    public void removeAuthToken() { prefs.edit().remove(USER_TOKEN).commit();}
 }
