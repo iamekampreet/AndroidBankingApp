@@ -75,6 +75,10 @@ public class UpcomingPaymentsFragment extends Fragment implements Callback<List<
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
+            if (response.raw().code() == 401) {
+                Utils.handleUnauthorizedError(getActivity());
+                return;
+            }
             ApiError apiError = Utils.parseError(response, getActivity().getApplicationContext());
             Log.d("UpcomingPaymentsFragment", apiError.getMessage());
             Toast.makeText(getContext(),
