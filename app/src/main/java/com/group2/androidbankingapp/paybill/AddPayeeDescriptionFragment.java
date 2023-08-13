@@ -69,7 +69,7 @@ public class AddPayeeDescriptionFragment extends DialogFragment implements Callb
         View view = inflater.inflate(R.layout.dialog_fragment_add_payee_description, null);
 
         TextView payeeNameTextView = view.findViewById(R.id.textView_payee_name_value);
-        TextView payeeAccountTextView = view.findViewById(R.id.textView_payee_account_number);
+        TextView payeeAccountTextView = view.findViewById(R.id.textView_account_no_value);
         updateUserPayeeProgressBar = view.findViewById(R.id.progressBar_update_payee);
 
         payeeNameTextView.setText(payeeModel.getDisplayName());
