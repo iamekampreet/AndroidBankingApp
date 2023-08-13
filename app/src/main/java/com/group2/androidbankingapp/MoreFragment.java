@@ -1,12 +1,10 @@
 package com.group2.androidbankingapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +35,10 @@ public class MoreFragment extends Fragment {
         profileTV = rootView.findViewById(R.id.profileTV);
         profileTV.setOnClickListener(v -> profileClickHandler());
 
-        signOutIcon = rootView.findViewById(R.id.signOutIcon);
+        signOutIcon = rootView.findViewById(R.id.transactionLimIcon);
         signOutIcon.setOnClickListener(v -> signOutClickHandler());
 
-        signOutTV = rootView.findViewById(R.id.signOutTV);
+        signOutTV = rootView.findViewById(R.id.transactionLimTV);
         signOutTV.setOnClickListener(v -> signOutClickHandler());
 
         return rootView;

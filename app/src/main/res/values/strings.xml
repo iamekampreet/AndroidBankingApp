@@ -106,7 +106,12 @@
     <string name="whyKeepEmailUpdated">There are several types of emails we might send to you. Here are some examples. \n\nOne might tell you about a change to your Online Banking password. Very important if you didn\'t change your password. \n\nAnother might say when new account documents and statements are ready. This could be helpful as a reminder to pay a credit card bill. \n\nIf we think a new product or service could benefit you, we\'ll send a promotional message. Of course, you can always unsubscribe from these messages using the link inside the email.</string>
 
     <string name="changedProvincesText"><u>Changed provinces or moved from Canada?</u></string>
-    <string name="updateAddressesNumbers">To update your addresses for the following accounts, please call: <ul>\n\n<li>RBC Insurance: <a href="tel:18886447581"><font color="#006AC2">1-888-644-7581</font></a></li> \n\n<li>Investments (e.g. RRSPs, RESPs, RFSAs, Mutual Funds &amp; GICs): <u><font color="#006AC2">1-800-463-3863</font></u></li> \n\n<li>RBC Direct Investing: <u><font color="#006AC2">1-800-769-2560</font></u></li> \n\n<li>RBC Dominion Services: <u><font color="#006AC2">1-888-820-8006</font></u></li> \n\n<li>RBC Wealth Management: <u><font color="#006AC2">1-833-654-2566</font></u></li> </ul></string>
-    <string name="test"><a href="tel:8886447581">1-888-644-7581</a></string>
+    <string name="updateAddressesNumbers">To update your addresses for the following accounts, please call:</string>
+    <!--   <u><font color="#006AC2">    ></li> \n\n<li> </li> </ul>-->
+    <string name="insuranceNum"><u>1-888-644-7581</u></string>
+    <string name="investmentsNum"><u>1-800-463-3863</u></string>
+    <string name="directInvestingNum"><u>1-800-769-2560</u></string>
+    <string name="dominionServicesNum"><u>1-888-820-8006</u></string>
+    <string name="wealthMgmtNum"><u>1-833-654-2566</u></string>
     <string name="whyKeepAddressUpdated">Your home address is where we send your mail unless you provide a separate mailing address. We need one to provide you certain services, like replacing a debit card. \n\nAlso, government regulations require us to collect both your address and tax residency information. \n\n<b>Note:</b> You can use a PO box or general delivery address for your mailing address but not for your home address.</string>
 </resources>

@@ -6,12 +6,14 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.group2.androidbankingapp.MainActivity;
 import com.group2.androidbankingapp.R;
 import com.group2.androidbankingapp.models.UserModel;
 import com.group2.androidbankingapp.utils.Singleton;
@@ -19,7 +21,7 @@ import com.group2.androidbankingapp.utils.Singleton;
 public class AddressFragment extends Fragment {
     View rootView;
     ImageView returnBack;
-    TextView returnBack2, homeAddressValueTV, mailingAddressValueTV;
+    TextView returnBack2, homeAddressValueTV, mailingAddressValueTV, insuranceNumTV, investmentNumTV, directInvestingNumTV, dominionServicesNumTV, wealthMgmtNumTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +43,21 @@ public class AddressFragment extends Fragment {
         mailingAddressValueTV = rootView.findViewById(R.id.mailingAddressValueTV);
         mailingAddressValueTV.setText(user.getAddress());
 
+        insuranceNumTV = rootView.findViewById(R.id.insuranceNumTV);
+        insuranceNumTV.setOnClickListener(v -> onInsuranceNumClickHandler());
+
+        investmentNumTV = rootView.findViewById(R.id.investmentsNumTV);
+        investmentNumTV.setOnClickListener(v -> onInvestmentNumClickHandler());
+
+        directInvestingNumTV = rootView.findViewById(R.id.directInvestingNumTV);
+        directInvestingNumTV.setOnClickListener(v -> onDirectInvestingNumClickHandler());
+
+        dominionServicesNumTV = rootView.findViewById(R.id.dominionServicesNumTV);
+        dominionServicesNumTV.setOnClickListener(v -> onDominionServicesNumClickHandler());
+
+        wealthMgmtNumTV = rootView.findViewById(R.id.wealthMgmtNumTV);
+        wealthMgmtNumTV.setOnClickListener(v -> onWealthMgmtNumClickHandler());
+
 
         return rootView;
     }
@@ -49,7 +66,26 @@ public class AddressFragment extends Fragment {
         getParentFragmentManager().popBackStack();
     }
 
-    public void onRBCInsuranceNumClickHandler() {
-        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:8886447581")));
+    public void onInsuranceNumClickHandler() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1-888-644-7581")));
+    }
+
+    public void onInvestmentNumClickHandler() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1-800-463-3863")));
+    }
+
+
+    public void onDirectInvestingNumClickHandler() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1-800-769-2560")));
+    }
+
+
+    public void onDominionServicesNumClickHandler() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1-888-820-8006")));
+    }
+
+
+    public void onWealthMgmtNumClickHandler() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:1-833-654-2566")));
     }
 }

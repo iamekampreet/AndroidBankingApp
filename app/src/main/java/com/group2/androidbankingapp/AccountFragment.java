@@ -1,10 +1,13 @@
 package com.group2.androidbankingapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +15,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.group2.androidbankingapp.models.AccountInfo;
 import com.group2.androidbankingapp.models.CardInfoModel;
 import com.group2.androidbankingapp.models.UserModel;
+import com.group2.androidbankingapp.profile.ProfileFragment;
 import com.group2.androidbankingapp.utils.Singleton;
 
 import java.util.ArrayList;
 
 public class AccountFragment extends Fragment {
+    public static final String TAG = "ACCOUNT_FRAGMENT_TAG";
     View rootView;
-    ImageView returnBack;
-    TextView chkActNumTV, chkActBalTV, savActNumTV, savActBalTV, bankingTotalTV, creditCardAccNumTV, creditCardValTV, cardsTotalTV;
+    ImageView returnBack, transactionLimIcon;
+    TextView chkActNumTV, chkActBalTV, savActNumTV, savActBalTV, bankingTotalTV, creditCardAccNumTV, creditCardValTV, cardsTotalTV, transactionLimTV;
+    ConstraintLayout mainConstraintLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,11 +71,28 @@ public class AccountFragment extends Fragment {
         cardsTotalTV = rootView.findViewById(R.id.cardsTotalTV);
         cardsTotalTV.setText("CAD "  + Double.toString(creditCardBal));
 
+        transactionLimIcon = rootView.findViewById(R.id.transactionLimIcon);
+        transactionLimIcon.setOnClickListener(v -> transactionLimClickHandler());
+
+        transactionLimTV = rootView.findViewById(R.id.transactionLimTV);
+        transactionLimTV.setOnClickListener(v -> transactionLimClickHandler());
+
+        mainConstraintLayout = rootView.findViewById(R.id.mainConstraintLayout);
+
         return rootView;
     }
 
     public void returnBackClickHandler() {
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
+    }
+
+    public void transactionLimClickHandler() {
+        TransactionLimitsFragment transactionLimitsFragment = new TransactionLimitsFragment();
+
+        getParentFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, transactionLimitsFragment)
+                .addToBackStack(AccountFragment.TAG)
+                .commit();
     }
 }

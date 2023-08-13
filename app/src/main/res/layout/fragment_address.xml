@@ -238,13 +238,124 @@
                 app:layout_constraintTop_toTopOf="@id/view3" />
 
             <TextView
+                android:id="@+id/insuranceLbl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/test"
-                android:text="@string/test"
-                android:onClick="onRBCInsuranceNumClickHandler"
+                android:layout_margin="15dp"
+                android:text="• RBC Insurance:"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/view3"
-                app:layout_constraintTop_toTopOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/yourOtherAccountsTV2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/insuranceNumTV"
+                android:text="@string/insuranceNum"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toEndOf="@id/insuranceLbl"
+                app:layout_constraintTop_toBottomOf="@id/yourOtherAccountsTV2"
+                android:layout_margin="15dp"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/investmentsLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="• Investments (e.g. RRSPs, RESPs, RFSAs, Mutual Funds &amp; GICs):"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/insuranceLbl"
+                android:layout_margin="15dp"
+                />
+
+            <TextView
+                android:id="@+id/investmentsNumTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/investmentsNum"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/investmentsLbl"
+                />
+
+
+            <TextView
+                android:id="@+id/directInvestingLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="• RBC Direct Investing:"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/investmentsNumTV"
+                android:layout_margin="15dp"
+                />
+
+            <TextView
+                android:id="@+id/directInvestingNumTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/directInvestingNum"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/directInvestingLbl"
+                />
+
+
+            <TextView
+                android:id="@+id/dominionServicesLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="• RBC Dominion Services:"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/directInvestingNumTV"
+                android:layout_margin="15dp"
+                />
+
+            <TextView
+                android:id="@+id/dominionServicesNumTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dominionServicesNum"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/dominionServicesLbl"
+                />
+
+
+            <TextView
+                android:id="@+id/wealthMgmtLbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="• RBC Wealth Management:"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintEnd_toEndOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/dominionServicesNumTV"
+                android:layout_margin="15dp"
+                />
+
+            <TextView
+                android:id="@+id/wealthMgmtNumTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wealthMgmtNum"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toStartOf="@id/view3"
+                app:layout_constraintTop_toBottomOf="@id/wealthMgmtLbl"
                 />
 
             <View
@@ -304,6 +415,7 @@
                 android:layout_marginTop="120dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view5" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
