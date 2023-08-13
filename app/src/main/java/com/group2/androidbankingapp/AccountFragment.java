@@ -64,7 +64,7 @@ public class AccountFragment extends Fragment {
         creditCardAccNumTV = rootView.findViewById(R.id.creditCardAccNumTV);
         creditCardAccNumTV.setText(cards.get(1).getCardNumber());
 
-        double creditCardBal = cards.get(0).getAccountBalance();
+        double creditCardBal = cards.get(1).getAccountBalance();
         creditCardValTV = rootView.findViewById(R.id.creditCardValTV);
         creditCardValTV.setText("CAD " + Double.toString(creditCardBal));
 
